@@ -9,8 +9,8 @@ if api_key:
     genai.configure(api_key=api_key)
 
 try:
-    # استخدام الموديل القياسي المحدث
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    # استخدام موديل gemini-pro المضمون
+    model = genai.GenerativeModel("gemini-pro")
 except Exception as e:
     print("Model init error:", e)
 
