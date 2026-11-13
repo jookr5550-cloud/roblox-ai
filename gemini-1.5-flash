@@ -9,6 +9,7 @@ if api_key:
     genai.configure(api_key=api_key)
 
 try:
+    # استخدام الموديل القياسي المحدث
     model = genai.GenerativeModel("gemini-1.5-flash")
 except Exception as e:
     print("Model init error:", e)
@@ -59,7 +60,6 @@ def chat():
         return jsonify({"reply": reply, "attempts": attempts})
         
     except Exception as e:
-        # هذا يخلي الحارس يرد عليك بالخطأ بالتحديد عشان نعرف وش المشكلة
         error_msg = str(e)
         print("ERROR:", error_msg)
         return jsonify({"reply": f"Guard AI Error: {error_msg}"})
