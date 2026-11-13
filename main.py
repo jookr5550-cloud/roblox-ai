@@ -8,11 +8,7 @@ api_key = os.environ.get("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
 
-try:
-    # استخدام موديل gemini-pro المضمون
-    model = genai.GenerativeModel("gemini-pro")
-except Exception as e:
-    print("Model init error:", e)
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 player_data = {}
 
@@ -60,9 +56,7 @@ def chat():
         return jsonify({"reply": reply, "attempts": attempts})
         
     except Exception as e:
-        error_msg = str(e)
-        print("ERROR:", error_msg)
-        return jsonify({"reply": f"Guard AI Error: {error_msg}"})
+        return jsonify({"reply": f"Guard AI Error: {str(e)}"})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
